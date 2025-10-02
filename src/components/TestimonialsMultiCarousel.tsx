@@ -23,7 +23,6 @@ export default function TestimonialsMultiCarousel({ testimonials }: Testimonials
   // Create enough duplicates for seamless looping
   const visibleCards = 3 // Number of cards visible at once
   const totalSets = Math.ceil(testimonials.length / visibleCards) || 1
-  const allTestimonials = [...testimonials, ...testimonials, ...testimonials]
 
   useEffect(() => {
     if (testimonials.length <= 1) return
@@ -39,7 +38,7 @@ export default function TestimonialsMultiCarousel({ testimonials }: Testimonials
     return (
       <div className="text-center py-12">
         <p className="text-slate-600 text-lg">Client testimonials coming soon.</p>
-        <p className="text-slate-500 mt-2">We're gathering feedback from our satisfied clients.</p>
+        <p className="text-slate-500 mt-2">We&apos;re gathering feedback from our satisfied clients.</p>
       </div>
     )
   }
@@ -79,7 +78,7 @@ export default function TestimonialsMultiCarousel({ testimonials }: Testimonials
 
               {/* Testimonial Text */}
               <p className="text-slate-700 mb-4 italic leading-relaxed">
-                "{testimonial.testimonial}"
+                &quot;{testimonial.testimonial}&quot;
               </p>
 
               {/* Client Info */}
