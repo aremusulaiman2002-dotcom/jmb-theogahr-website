@@ -109,7 +109,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              We don't just fill positions—we architect high-performing teams that drive your business forward. 
+              We don&apos;t just fill positions—we architect high-performing teams that drive your business forward. 
               Comprehensive HR consulting tailored for corporate excellence.
             </motion.p>
             
@@ -148,6 +148,21 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center">
+            <motion.div 
+              className="w-1 h-3 bg-slate-400 rounded-full mt-2"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
       </section>
 
       {/* Trust Bar */}
