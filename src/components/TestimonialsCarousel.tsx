@@ -50,7 +50,7 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
     return (
       <div className="text-center py-12">
         <p className="text-slate-600 text-lg">Client testimonials coming soon.</p>
-        <p className="text-slate-500 mt-2">We're gathering feedback from our satisfied clients.</p>
+        <p className="text-slate-500 mt-2">We&rsquo;re gathering feedback from our satisfied clients.</p>
       </div>
     )
   }
@@ -89,7 +89,7 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
 
               {/* Testimonial Text */}
               <blockquote className="text-xl text-slate-700 mb-6 max-w-2xl leading-relaxed">
-                "{testimonials[currentIndex].testimonial}"
+                &ldquo;{testimonials[currentIndex].testimonial}&rdquo;
               </blockquote>
 
               {/* Client Info */}

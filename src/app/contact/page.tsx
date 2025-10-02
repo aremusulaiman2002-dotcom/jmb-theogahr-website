@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
 import TalentPoolForm from '@/components/TalentPoolForm'
 
@@ -19,7 +18,7 @@ export default function Contact() {
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Ready to transform your HR strategy? Let's start a conversation about how we can help 
+              Ready to transform your HR strategy? Let&rsquo;s start a conversation about how we can help 
               your business achieve its human capital objectives.
             </p>
           </motion.div>

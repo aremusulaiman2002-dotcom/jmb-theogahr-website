@@ -50,7 +50,7 @@ export default function TalentPoolForm() {
       } else {
         setSubmitStatus('error')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -68,7 +68,7 @@ export default function TalentPoolForm() {
     >
       <h3 className="text-2xl font-bold text-slate-900 mb-2">Join Our Talent Pool</h3>
       <p className="text-slate-600 mb-6">
-        Submit your details and we'll notify you when relevant opportunities match your profile.
+        Submit your details and we&rsquo;ll notify you when relevant opportunities match your profile.
       </p>
       
       {submitStatus === 'success' && (
@@ -78,7 +78,7 @@ export default function TalentPoolForm() {
           className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6"
         >
           <p className="text-green-800 font-medium">
-            Thank you for joining our talent pool! We'll be in touch when matching opportunities arise.
+            Thank you for joining our talent pool! We&rsquo;ll be in touch when matching opportunities arise.
           </p>
         </motion.div>
       )}
