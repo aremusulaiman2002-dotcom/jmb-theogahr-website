@@ -157,7 +157,7 @@ export default function Careers() {
           >
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Join Our Talent Pool</h2>
             <p className="text-lg text-slate-700 mb-8 max-w-2xl mx-auto">
-              Don't see the perfect role? Join our talent pool and be the first to know about new opportunities 
+              don&rsquo;t see the perfect role? Join our talent pool and be the first to know about new opportunities 
               that match your skills and career aspirations.
             </p>
             <Link

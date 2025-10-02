@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { getBlogPost } from '@/lib/queries'
 
@@ -13,7 +13,7 @@ interface BlogPost {
   publishedAt: string
   readTime: string
   author: string
-  body: any[]
+  body: any[] // Keeping this as any since it's from Sanity CMS
 }
 
 interface BlogModalProps {
@@ -22,17 +22,20 @@ interface BlogModalProps {
   postSlug: string
 }
 
+interface BlockChild {
+  text: string
+}
+
+interface ContentBlock {
+  _type: string
+  children: BlockChild[]
+}
+
 export default function BlogModal({ isOpen, onClose, postSlug }: BlogModalProps) {
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    if (isOpen && postSlug) {
-      fetchPost()
-    }
-  }, [isOpen, postSlug])
-
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     setLoading(true)
     try {
       const postData = await getBlogPost(postSlug)
@@ -42,7 +45,13 @@ export default function BlogModal({ isOpen, onClose, postSlug }: BlogModalProps)
     } finally {
       setLoading(false)
     }
-  }
+  }, [postSlug])
+
+  useEffect(() => {
+    if (isOpen && postSlug) {
+      fetchPost()
+    }
+  }, [isOpen, postSlug, fetchPost])
 
   // Close modal on Escape key
   useEffect(() => {
@@ -84,6 +93,7 @@ export default function BlogModal({ isOpen, onClose, postSlug }: BlogModalProps)
           <button
             onClick={onClose}
             className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
+            aria-label="Close modal"
           >
             <span className="text-2xl">×</span>
           </button>
@@ -135,11 +145,11 @@ export default function BlogModal({ isOpen, onClose, postSlug }: BlogModalProps)
 
                 {/* Article Body */}
                 <div className="prose prose-lg max-w-none">
-                  {post.body && post.body.map((block: any, index: number) => {
+                  {post.body && post.body.map((block: ContentBlock, index: number) => {
                     if (block._type === 'block') {
                       return (
                         <div key={index} className="mb-6">
-                          {block.children.map((child: any, childIndex: number) => (
+                          {block.children.map((child: BlockChild, childIndex: number) => (
                             <p key={childIndex} className="text-slate-700 leading-relaxed mb-4">
                               {child.text}
                             </p>
@@ -157,7 +167,7 @@ export default function BlogModal({ isOpen, onClose, postSlug }: BlogModalProps)
                     Need Professional HR Guidance?
                   </h3>
                   <p className="text-slate-600 mb-4">
-                    Let's discuss how we can help optimize your human capital strategy.
+                    Let&rsquo;s discuss how we can help optimize your human capital strategy.
                   </p>
                   <Link
                     href="/contact"
